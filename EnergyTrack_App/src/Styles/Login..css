@@ -1,0 +1,68 @@
+.main {
+  @apply flex justify-center bg-no-repeat bg-center bg-cover;
+}
+
+.contenedor {
+  @apply flex items-center h-screen justify-center;
+}
+
+.form-container {
+  @apply flex w-[900px] h-[500px] bg-white border-none rounded-lg shadow-lg overflow-hidden;
+}
+
+.form-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  flex: 1;
+}
+
+.form-signin h1 {
+  font-size: 36px;
+  color: #432c1f;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.form-signin input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 3px solid #432c1f;
+  border-radius: 16px;
+  outline: none;
+  color: #432c1f;
+  font-size: 18px;
+}
+
+.mensajeBienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 20px;
+  flex: 1;
+  width: 900px;
+  background-color: #f3d0a1;
+  color: #432c1f;
+  text-align: center;
+}
+.mensajeBienvenida p {
+  text-align: left;
+  font-size: 28px;
+  background-color: #f8f4e4;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.mensajeBienvenida p span {
+  background-color: #f3d0a1;
+  color: #432c1f;
+  padding: 3px;
+  font-weight: 700;
+  border-radius: 10px;
+}
