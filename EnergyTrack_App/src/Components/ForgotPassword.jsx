@@ -14,7 +14,7 @@ const ForgotPassword = () => {
             />
           </div>
           <form className="flex items-center p-2 justify-evenly flex-col flex-1 bg-white">
-            <h1 className="text-4xlxl text-center flex justify-center items-center text-[#1c4355] font-bold uppercase">
+            <h1 className="text-4xl text-center flex justify-center items-center text-[#1c4355] font-bold uppercase">
               Recuperar Contraseña
             </h1>
             <div className="flex justify-evenly flex-col items-end">
