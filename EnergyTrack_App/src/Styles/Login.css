@@ -17,11 +17,12 @@
   flex-direction: column;
   padding: 20px;
   flex: 1;
+  background-color: white;
 }
 
 .form-signin h1 {
   font-size: 36px;
-  color: #43d8f1;
+  color: #1c4355;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -37,10 +38,11 @@
   padding: 10px;
   outline: none;
   margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: rgba(127, 248, 226, 0.21);
+  border-radius: 20px;
+  background-color: #7ff8e280;
   color: #432c1f;
   font-size: 18px;
+  color: #1c4355;
 }
 
 input:focus {
@@ -50,11 +52,11 @@ input:focus {
 .mensajeBienvenida {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   padding: 20px;
   flex: 1;
-  color: #ffffff;
+  color: #1c4355;
   background-image: url('../assets/rightbox.svg');
 }
 .mensajeBienvenida h1 {
@@ -67,11 +69,11 @@ input:focus {
 }
 
 .mensajeBienvenida p span {
-  color: rgb(68, 129, 159);
+  color: #1c495f;
   padding: 3px;
   font-weight: 700;
 }
 
 .password-recover {
-  @apply text-xs text-gray-500 mt-1 no-underline flex hover:text-[#0000ff] hover:underline;
+  @apply text-xs text-gray-500 mt-1 no-underline flex hover:text-[#1c4355] hover:underline;
 }
