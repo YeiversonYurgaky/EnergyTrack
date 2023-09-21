@@ -1,6 +1,5 @@
 .main {
-  @apply flex justify-center bg-no-repeat bg-center bg-cover;
-  background-color: rgba(82, 206, 245, 1);
+  @apply flex justify-center bg-[#52cef5];
 }
 
 .contenedor {
