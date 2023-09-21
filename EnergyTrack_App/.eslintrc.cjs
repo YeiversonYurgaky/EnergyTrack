@@ -16,13 +16,5 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    indent: ['warn', 2],
-    quotes: ['warn', 'single'],
-    'import/no-unresolved-imports': [
-      'off',
-      {
-        ignore: ['react', 'react-dom'],
-      },
-    ],
   },
-};
+}

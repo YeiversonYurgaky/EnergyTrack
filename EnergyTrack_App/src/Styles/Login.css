@@ -1,5 +1,6 @@
 .main {
   @apply flex justify-center bg-no-repeat bg-center bg-cover;
+  background-color: rgba(82, 206, 245, 1);
 }
 
 .contenedor {
@@ -13,7 +14,7 @@
 .form-signin {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   padding: 20px;
   flex: 1;
@@ -21,9 +22,13 @@
 
 .form-signin h1 {
   font-size: 36px;
-  color: #432c1f;
+  color: #43d8f1;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.contain-inputs {
+  @apply flex justify-evenly flex-col items-end;
 }
 .form-signin input {
   display: flex;
@@ -31,38 +36,43 @@
   justify-content: center;
   width: 250px;
   padding: 10px;
-  margin-bottom: 10px;
-  border: 3px solid #432c1f;
-  border-radius: 16px;
   outline: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: rgba(127, 248, 226, 0.21);
   color: #432c1f;
   font-size: 18px;
+}
+
+input:focus {
+  outline: 2px solid #43d8f1;
 }
 
 .mensajeBienvenida {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-direction: column;
   padding: 20px;
   flex: 1;
-  width: 900px;
-  background-color: #f3d0a1;
-  color: #432c1f;
-  text-align: center;
+  color: #ffffff;
+  background-image: url('../assets/rightbox.svg');
 }
+.mensajeBienvenida h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
 .mensajeBienvenida p {
-  text-align: left;
-  font-size: 28px;
-  background-color: #f8f4e4;
-  padding: 3px;
-  border-radius: 10px;
+  font-size: 20px;
 }
 
 .mensajeBienvenida p span {
-  background-color: #f3d0a1;
-  color: #432c1f;
+  color: rgb(68, 129, 159);
   padding: 3px;
   font-weight: 700;
-  border-radius: 10px;
+}
+
+.password-recover {
+  @apply text-xs text-gray-500 mt-1 no-underline flex hover:text-[#0000ff] hover:underline;
 }
