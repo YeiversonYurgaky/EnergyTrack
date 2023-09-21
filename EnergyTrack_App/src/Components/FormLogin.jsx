@@ -29,7 +29,10 @@ const FormLogin = () => {
               <div>
                 <input type="password" placeholder="Contraseña" />
               </div>
-              <a className="password-recover" href="#">
+              <a
+                className="password-recover"
+                href="http://localhost:5173/forgotpassword"
+              >
                 Recuperar contraseña
               </a>
             </div>
