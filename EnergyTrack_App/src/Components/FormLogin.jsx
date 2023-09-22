@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ButtonLogin from './ButtonLogin';
 import '../Styles/Login.css';
 import ButtonRegister from './ButtonRegister';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import Constantes from '../../Utils/Constantes';
 const FormLogin = () => {
+  const [usuario, setUsuario] = useState('');
+  const [contraseña, setContraseña] = useState('');
   const navigate = useNavigate();
-  const irDashboard = () => {
-    navigate('/dashboard');
-  };
   const irRegistrar = () => {
     navigate('/register');
   };
+  const iniciarSesion = async (e) => {
+    e.preventDefault();
+    const endPoint = Constantes.URL_BASE + '/login';
+
+    const data = {
+      usuario: usuario,
+      password: contraseña,
+    };
+
+    await axios
+      .post(endPoint, data)
+      .then((resp) => {
+        console.log(resp);
+        localStorage.setItem('token', resp.data.jwt);
+        localStorage.setItem('user', resp.data.user);
+        localStorage.setItem('username', resp.data.user.usuario);
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status == 400 || error.response.status === 404) {
+          Swal.fire('Informacion!', error.response.data.message, 'error');
+        } else {
+          Swal.fire('Informacion!', 'Ocurrio un error', 'error');
+        }
+      });
+  };
+
   return (
     <main className="main">
       <div className="contenedor">
@@ -33,10 +63,22 @@ const FormLogin = () => {
             <h1>Ingresar</h1>
             <div className="contain-inputs">
               <div className="mb-3">
-                <input type="text" placeholder="Usuario" />
+                <input
+                  onChange={(e) => {
+                    setUsuario(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Usuario"
+                />
               </div>
               <div>
-                <input type="password" placeholder="Contraseña" />
+                <input
+                  onChange={(e) => {
+                    setContraseña(e.target.value);
+                  }}
+                  type="password"
+                  placeholder="Contraseña"
+                />
               </div>
               <a
                 className="password-recover"
@@ -45,7 +87,7 @@ const FormLogin = () => {
                 Recuperar contraseña
               </a>
             </div>
-            <ButtonLogin fnIniciarSesion={irDashboard} label={'Ingresar'} />
+            <ButtonLogin fnIniciarSesion={iniciarSesion} label={'Ingresar'} />
             <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
             <ButtonRegister fnRegistarse={irRegistrar} label={'Registrarse'} />
           </form>
