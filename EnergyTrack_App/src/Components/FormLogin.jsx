@@ -2,7 +2,15 @@ import React from 'react';
 import ButtonLogin from './ButtonLogin';
 import '../Styles/Login.css';
 import ButtonRegister from './ButtonRegister';
+import { useNavigate } from 'react-router-dom';
 const FormLogin = () => {
+  const navigate = useNavigate();
+  const irDashboard = () => {
+    navigate('/dashboard');
+  };
+  const irRegistrar = () => {
+    navigate('/register');
+  };
   return (
     <main className="main">
       <div className="contenedor">
@@ -37,9 +45,9 @@ const FormLogin = () => {
                 Recuperar contraseña
               </a>
             </div>
-            <ButtonLogin label={'Ingresar'} />
+            <ButtonLogin fnIniciarSesion={irDashboard} label={'Ingresar'} />
             <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-            <ButtonRegister label={'Registrarse'} />
+            <ButtonRegister fnRegistarse={irRegistrar} label={'Registrarse'} />
           </form>
         </section>
       </div>

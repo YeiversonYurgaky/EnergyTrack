@@ -12,7 +12,9 @@ const NavDashboard = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
+            <Nav.Link href="http://localhost:5173/">
+              Ir al inicio de sesión
+            </Nav.Link>
             <Nav.Link href="#link">Configuración</Nav.Link>
             <NavDropdown title="Filtrar" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">

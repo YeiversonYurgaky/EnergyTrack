@@ -1,7 +1,12 @@
 import React from 'react';
 import ButtonRegister from './ButtonRegister';
+import { useNavigate } from 'react-router-dom';
 
 const FormRegister = () => {
+  const navigate = useNavigate();
+  const irLogin = () => {
+    navigate('/');
+  };
   return (
     <main className="flex justify-center bg-[#52cef5]">
       <div className="flex items-center h-screen justify-center">
@@ -41,13 +46,13 @@ const FormRegister = () => {
               </div>
               <div>
                 <input
-                  className="flex items-center justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
+                  className="flex items-center mb-3 justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="password"
                   placeholder="Contraseña"
                 />
               </div>
             </div>
-            <ButtonRegister label={'Registrarse'} />
+            <ButtonRegister fnRegistarse={irLogin} label={'Registrarse'} />
             <a
               className="text-lg text-gray-500 mt-1 no-underline flex hover:text-[#1c4355] hover:underline"
               href="http://localhost:5173/"
