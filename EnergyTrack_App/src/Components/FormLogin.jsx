@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonLogin from './ButtonLogin';
 import '../Styles/Login.css';
+import ButtonRegister from './ButtonRegister';
 const FormLogin = () => {
   return (
     <main className="main">
@@ -37,6 +38,8 @@ const FormLogin = () => {
               </a>
             </div>
             <ButtonLogin label={'Ingresar'} />
+            <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+            <ButtonRegister label={'Registrarse'} />
           </form>
         </section>
       </div>
