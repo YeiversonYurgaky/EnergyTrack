@@ -1,5 +1,5 @@
 .bg-body-tertiary {
-  background-color: #43d8f1 !important;
+  --bs-tertiary-bg-rgb: 67, 216, 241;
 }
 
 .navbar-brand {
@@ -18,14 +18,14 @@
 }
 
 .navbar-brand:hover {
-  color: #ffffff !important;
+  color: #ccfffc !important;
 }
 
 .nav-link:hover {
-  color: #ffffff !important;
+  color: #ccfffc !important;
 }
 
 .dropdown-item:hover {
-  color: #ffffff !important;
+  color: #ccfffc !important;
   background-color: #1c4355 !important;
 }
