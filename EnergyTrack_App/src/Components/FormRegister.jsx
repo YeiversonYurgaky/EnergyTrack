@@ -1,11 +1,44 @@
-import React from 'react';
-import ButtonRegister from './ButtonRegister';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Constantes from '../../Utils/Constantes';
+import ButtonRegister from './ButtonRegister';
 
 const FormRegister = () => {
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [email, setEmail] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [contraseña, setContraseña] = useState('');
   const navigate = useNavigate();
-  const irLogin = () => {
-    navigate('/');
+
+  const Registrarse = async (e) => {
+    e.preventDefault();
+    const endPoint = Constantes.URL_BASE + '/usuarios/create';
+
+    const data = {
+      nombres: nombre,
+      apellidos: apellido,
+      email: email,
+      usuario: usuario,
+      password: contraseña,
+    };
+
+    await axios
+      .post(endPoint, data)
+      .then((resp) => {
+        console.log(resp);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status == 400 || error.response.status === 404) {
+          Swal.fire('Informacion!', error.response.data.message, 'error');
+        } else {
+          Swal.fire('Informacion!', 'Ocurrio un error', 'error');
+        }
+      });
   };
   return (
     <main className="flex justify-center bg-[#52cef5]">
@@ -21,6 +54,9 @@ const FormRegister = () => {
                   className="flex items-center justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="text"
                   placeholder="Nombres"
+                  onChange={(e) => {
+                    setNombre(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
@@ -28,6 +64,9 @@ const FormRegister = () => {
                   className="flex items-center justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="text"
                   placeholder="Apellidos"
+                  onChange={(e) => {
+                    setApellido(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
@@ -35,6 +74,9 @@ const FormRegister = () => {
                   className="flex items-center justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="text"
                   placeholder="Usuario"
+                  onChange={(e) => {
+                    setUsuario(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
@@ -42,6 +84,9 @@ const FormRegister = () => {
                   className="flex items-center justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="email"
                   placeholder="Correo electronico"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div>
@@ -49,10 +94,13 @@ const FormRegister = () => {
                   className="flex items-center mb-3 justify-center w-64 h-12 px-4 p-2 rounded-3xl bg-[#7ff8e280] text-[#1c4355] focus:outline-[#43d8f1]"
                   type="password"
                   placeholder="Contraseña"
+                  onChange={(e) => {
+                    setContraseña(e.target.value);
+                  }}
                 />
               </div>
             </div>
-            <ButtonRegister fnRegistarse={irLogin} label={'Registrarse'} />
+            <ButtonRegister fnRegistarse={Registrarse} label={'Registrarse'} />
             <a
               className="text-lg text-gray-500 mt-1 no-underline flex hover:text-[#1c4355] hover:underline"
               href="http://localhost:5173/"

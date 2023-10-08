@@ -1,11 +1,11 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import ButtonLogin from './ButtonLogin';
-import '../Styles/Login.css';
-import ButtonRegister from './ButtonRegister';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 import Constantes from '../../Utils/Constantes';
+import '../Styles/Login.css';
+import ButtonLogin from './ButtonLogin';
+import ButtonRegister from './ButtonRegister';
 const FormLogin = () => {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
@@ -15,7 +15,7 @@ const FormLogin = () => {
   };
   const iniciarSesion = async (e) => {
     e.preventDefault();
-    const endPoint = Constantes.URL_BASE + '/login';
+    const endPoint = Constantes.URL_BASE + '/usuarios/login';
 
     const data = {
       usuario: usuario,
@@ -26,14 +26,15 @@ const FormLogin = () => {
       .post(endPoint, data)
       .then((resp) => {
         console.log(resp);
-        localStorage.setItem('token', resp.data.jwt);
-        localStorage.setItem('user', resp.data.user);
-        localStorage.setItem('username', resp.data.user.usuario);
         navigate('/dashboard');
       })
       .catch((error) => {
         console.log(error);
-        if (error.response.status == 400 || error.response.status === 404) {
+        if (
+          error.response.status === 400 ||
+          error.response.status === 404 ||
+          error.response.status === 401
+        ) {
           Swal.fire('Informacion!', error.response.data.message, 'error');
         } else {
           Swal.fire('Informacion!', 'Ocurrio un error', 'error');
