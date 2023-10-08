@@ -29,4 +29,21 @@ module.exports.CreateConsumo = (data) => {
   });
 };
 
-//eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NGY4NzQ0ZWFjYjUwYWFkY2VhZjQwMmUiLCJub21icmVzIjoiQW1pbGthciIsImFwZWxsaWRvcyI6Ikhlcm5hbmRleiIsImVtYWlsIjoiYW1pbGthckBnbWFpbC5jb20iLCJpYXQiOjE2OTY3MDQ4ODEsImV4cCI6MTY5OTI5Njg4MX0.WP4KP1QR0DlvXyg4ntfgw8r-Vy277OlHQ3zItXcTpCc
+module.exports.FindAllConsumos = async () => {
+  return new Promise((resolve, reject) => {
+    ConsumoModel.find()
+      .then((resp) => {
+        Response.status = "200";
+        Response.message = "Resgirstros encontrados";
+        Response.result = resp;
+        resolve(Response);
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+        Response.status = "500";
+        Response.message = "Ocurrio un error en el servidor";
+        Response.result = err;
+        reject(Response);
+      });
+  });
+};
