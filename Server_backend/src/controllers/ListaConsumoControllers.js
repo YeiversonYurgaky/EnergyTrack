@@ -1,6 +1,7 @@
 const {
   CreateConsumo,
   FindAllConsumos,
+  deleteConsumo,
 } = require("../repository/consumosRepository");
 const ConsumoModel = require("../models/ListaConsumosModels");
 
@@ -35,4 +36,33 @@ async function findAll(req, res) {
   res.status(response.status).send(response);
 }
 
-module.exports = { createConsumo, findAll };
+async function eliminarConsumo(req, res) {
+  const consumoId = req.params.id; // Obtener la ID desde la URL
+
+  if (!consumoId) {
+    res
+      .status(404)
+      .send({ message: "La identificación del consumo es requerida" });
+    return;
+  }
+
+  deleteConsumo(consumoId)
+    .then((response) => {
+      if (response.status === "404") {
+        res.status(404).send(response);
+      } else {
+        res.status(response.status).send(response);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      const response = {
+        status: 500,
+        message: "Ocurrió un error en el servidor.",
+        error: error.message || "Error desconocido",
+      };
+      res.status(response.status).send(response);
+    });
+}
+
+module.exports = { createConsumo, findAll, eliminarConsumo };

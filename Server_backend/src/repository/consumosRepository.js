@@ -47,3 +47,34 @@ module.exports.FindAllConsumos = async () => {
       });
   });
 };
+
+module.exports.deleteConsumo = (consumoId) => {
+  return new Promise((resolve, reject) => {
+    ConsumoModel.findByIdAndDelete(consumoId)
+      .then((resp) => {
+        if (!resp) {
+          const response = {
+            status: "404",
+            message: "Consumo no encontrado",
+          };
+          reject(response);
+        } else {
+          const response = {
+            status: "200",
+            message: "Consumo eliminado correctamente",
+            result: resp,
+          };
+          resolve(response);
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        const response = {
+          status: "500",
+          message: "Ocurrió un error en el servidor",
+          result: err,
+        };
+        reject(response);
+      });
+  });
+};
