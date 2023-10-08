@@ -3,6 +3,7 @@ node_modules
 EnergyTrack_App/
 
 
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
