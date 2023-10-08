@@ -1,5 +1,7 @@
 node_modules
 .env
+EnergyTrack_App/
+
 
 # Editor directories and files
 .vscode/*
